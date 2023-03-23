@@ -22,18 +22,18 @@ public class ToDoService {
      * @param toDo
      * creates a new to do
      */
-    public void createToDo(ToDo toDo) {
-        toDoRepository.save(toDo);
+    public ToDo createToDo(ToDo toDo) {
+        return toDoRepository.save(toDo);
     }
 
     /**
-     *
+     * Update To Do
      * @param toDo
      * gets the ToDo by id
      * throws Exception if id is not found
      * overwrites variables with new arguments and saves them
      */
-    public void updateToDo(ToDo toDo) {
+    public ToDo updateToDo(ToDo toDo) {
         ToDo updateToDo = toDoRepository.findById(toDo.getId()).orElseThrow(
                 () -> new EntityNotFoundException("To Do not found."));
         updateToDo.setDone(toDo.getDone());
@@ -42,6 +42,7 @@ public class ToDoService {
         updateToDo.setDueDate(toDo.getDueDate());
 
         this.toDoRepository.save(updateToDo);
+        return updateToDo;
     }
 
     /**
@@ -77,5 +78,9 @@ public class ToDoService {
      */
     public Long getDoneCount(Boolean done) {
         return this.toDoRepository.countAllByDone(done);
+    }
+
+    public ToDo getId(Long id) {
+        return toDoRepository.findById(id).orElseThrow();
     }
 }
