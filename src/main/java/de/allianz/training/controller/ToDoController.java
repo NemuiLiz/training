@@ -50,7 +50,10 @@ public class ToDoController {
         return this.toDoService.getDoneCount(true);
     }
 
-
+    @GetMapping("/{id}")
+    public ToDo getIdToDo(@PathVariable("id") Long id) {
+        return this.toDoService.getId(id);
+    }
     /**
      *
      * @param toDoCreateRequest

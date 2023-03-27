@@ -1,9 +1,8 @@
 package de.allianz.training.config;
 
-import de.allianz.training.dto.ToDoCreateRequest;
-import de.allianz.training.entity.ToDo;
+
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeMap;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

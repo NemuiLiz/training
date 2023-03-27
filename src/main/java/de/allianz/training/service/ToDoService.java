@@ -65,7 +65,7 @@ public class ToDoService {
     /**
      *
      * @param done
-     * @return all to do's depending on true or false
+     * @return all to do depending on true or false
      */
     public List<ToDo> getToDoByDone(Boolean done) {
         return this.toDoRepository.findAllByDone(done);
@@ -74,13 +74,14 @@ public class ToDoService {
     /**
      *
      * @param done
-     * @return the count of done to do's depending on true or false
+     * @return the count of done to do depending on true or false
      */
     public Long getDoneCount(Boolean done) {
         return this.toDoRepository.countAllByDone(done);
     }
 
     public ToDo getId(Long id) {
-        return toDoRepository.findById(id).orElseThrow();
+        return toDoRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Entity not Found"));
     }
+
 }
