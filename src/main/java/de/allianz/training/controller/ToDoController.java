@@ -7,6 +7,8 @@ import de.allianz.training.service.ToDoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -85,7 +87,8 @@ public class ToDoController {
      * gets id of To Do and deletes the To Do
      */
     @DeleteMapping("/{id}")
-    public void deleteToDo(@PathVariable("id") Long id) {
+    public ResponseEntity<Void> deleteToDo(@PathVariable("id") Long id) {
         this.toDoService.deleteToDo(id);
+        return new ResponseEntity<>((HttpStatus.NO_CONTENT));
     }
 }
